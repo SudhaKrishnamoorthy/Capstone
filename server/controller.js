@@ -48,7 +48,7 @@ module.exports = {
         .catch(err => console.log(err))
     },
     createCompetitor: (req, res) => {
-        let {name} = req.params;
+        let {name} = req.body;
         sequelize.query(`INSERT INTO COMPETITORS (name)
         values('${name}')
         RETURNING *;`)
@@ -56,7 +56,7 @@ module.exports = {
         .catch(err => console.log(err))
     },
     deleteCompetitor: (req, res) => {
-        let {name} = req.params;
+        let {name} = req.body;
         sequelize.query(`DELETE from Competitors where name = ${name}`)
         .then(dbRes => res.status(200).send(dbRes[0]))
         .catch(err => console.log(err))

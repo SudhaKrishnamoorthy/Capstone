@@ -10,37 +10,49 @@
 <body>
     <header>
         <h1>Competitor List</h1>
+        <style>
+            @keyframes slideInLeft {
+                0% {
+                    transform: translateX(-100%);
+                }
+                100% {
+                    transform: translateX(0);
+                }
+            }
+        </style>
     </header>
 
     <main>
         <aside>
+            
             <h2>Add a new Competitor</h2>
 
             <form>
                 <label for="name-input">Competitor Name:</label>
                 <input type='text' id="name-input"/>
+                
 
                 
                 <h4>Top 5 Competitors</h4>
                 <div class="button">
                     <label for="competitor-one">1.</label>
-                    <input type="text" name="ranking" value="Lindt" id="ranking-one">
+                    <input type="text" name="ranking" value="" id="ranking-one">
                 </div>
                 <div class="button">
                     <label for="competitor-two">2.</label>
-                    <input type="text" name="ranking" value="Mars" id="ranking-two">
+                    <input type="text" name="ranking" value="" id="ranking-two">
                 </div>
                 <div class="button">
                     <label for="competitor-three">3.</label>
-                    <input type="text" name="ranking" value="Samsung" id="ranking-three">
+                    <input type="text" name="ranking" value="" id="ranking-three">
                 </div>
                 <div class="button">
                     <label for="competitor-four">4.</label>
-                    <input type="text" name="ranking" value="Google" id="ranking-two">
+                    <input type="text" name="ranking" value="" id="ranking-two">
                 </div>
                 <div class="button">
                     <label for="competitor-five">5.</label>
-                    <input type="text" name="ranking" value="Mars" id="ranking-five">
+                    <input type="text" name="ranking" value="" id="ranking-five">
                 </div>
 
                 
