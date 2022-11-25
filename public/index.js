@@ -1,14 +1,15 @@
-const form = document.querySelector('form')
-const nameInput = document.querySelector('#name-input')
-const competitorSelect = document.querySelector('#country-select')
-const competitorList = document.querySelector('#country-list')
+const form = document.querySelector('new-competitor-form')
+const input = document.querySelector('#new-competitor-input')
+//const competitorSelect = document.querySelector('#country-select')
+const competitorList = document.querySelector('#competitors')
+
 
 function handleSubmit(e) {
     e.preventDefault()
 
-    if (nameInput.value < 1) {
+    if (input.value < 1) {
         alert ('You must enter a competitor name')
-        return
+        return;
     }
 
     //let userRating = document.querySelector('input[name="rating"]:checked').value
@@ -20,18 +21,22 @@ function handleSubmit(e) {
 
     axios.post('http://localhost:4004/competitors', body)
         .then(() => {
-            competitorSelect.value = 1
-            nameInput.value = ''
+            competitorSelect.value > 1
+            newCompetitorInput.value = ''
             //document.querySelector('#ranking-one').checked = true
             getCompetitors()
         })
 }
-
 function deleteCard(id) {
     axios.delete(`http://localhost:4004/competitors/${id}`)
         .then(() => getCompetitors())
         .catch(err => console.log(err))
 }
+//function deleteCard(id) {
+    //axios.delete(`http://localhost:4004/competitors/${id}`)
+        //.then(() => getCompetitors())
+       // .catch(err => console.log(err))
+//}
 
 function getCompetitors() {
     competitorList.innerHTML = ''

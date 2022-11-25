@@ -8,7 +8,7 @@
     --purple: #8B5Cf6;
 }
 * {
-    font-family: Fira sans; sans-serif
+    font-family: 'Fira sans'; 'sans-serif'
     margin: 0;
     box-sizing: border-box;
 }
@@ -18,6 +18,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background-image: linear-gradient(to right, var(--gray), var(--darkest));
+    color: beige;
     
     
 }
@@ -37,29 +38,35 @@ header h1 {
     margin-bottom: 1rem;
     margin-left: 30%;
 }
-main {
-    display: flex;        
-    }
 
-aside h2 {
-    margin: 20px;
-    font-size: 1.5rem;
-    font-weight: 300;
+#new-competitor-form {
+   display: flex;
+
+}
+
+input, button {
+   appearance: none;
+   border: none;
+   outline: none;
+   background: none; 
+}
+
+#new-competitor-input {
+    flex: 1 1 0%;
+    background-color: var(--darker);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-right: 1rem;
+    color: var(--light);
+    font-size: 1.25rem;
+
+}
+
+#new-competitor-input::placeholder {
     color: var(--darkest);
-    margin-bottom: 1rem;
-    display: flex;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 300px;
-    width: 400px;
-    margin-top: 20px;
-}
-
-#form-name-input {
+#new-competitor-submit {
     color: var(--pink);
     font-size: 1.25rem;
     font-weight: 700;
@@ -69,40 +76,87 @@ form {
     cursor: pointer;
     transition: 0.4s;
 }
-#name-input-submit:hover {
+
+#new-competitor-submit:hover {
     opacity: 0.8;
+
 }
 
-.radio {
-    display: flex;
+#new-competitor-submit:active {
+    opacity: 0.6;
 }
+
+main {
+    flex: 1 1 0%;
+    padding: 2rem 1rem;
+    max-width: 800px;
+    width: 100%;
+    margin: auto;
+}
+
 .competitor-list {
-    padding: 1rem;
+    padding:1 rem;
+    }
 
-}
+    .competitor-list h2 {
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: var(--darkest);
+        margin-bottom: 1rem;
+    }
 
-#competitor-list h2 {
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: var(--gray);
-    margin-bottom: 1rem;
-}
+    #competitors .competitor {
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--darkest);
+        padding: 1rem;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
 
-#competitor-list h2 {
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: var(--gray);
-    margin-bottom: 1rem;
-}
+    }
 
-.button {
-    cursor: pointer;
-    margin: 0 0.5rem;
-    font-size: 1.125rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    transition: 0.4s;
-}
+    #competitors .competitor .content .text {
+       color: var(--light);
+       font-size: 1.125rem;
+       width: 100%; 
+       display: block;
+       transition: 0.4s;
+    }
 
+    #competitors .competitor .content .text:not(:read-only) {
+        color: var(--pink);
+    }
 
+    #competitors .competitor .actions {
+        display: flex;
+        margin: 0 -0.5rem;
+    }
 
+    .competitor .actions button {
+        cursor: pointer;
+        margin: 0 0.5rem;
+        font-size: 1.125rem;
+        font-weight: 700;
+        text-transform:uppercase;
+        transition: 0.4s;
+    }
+
+    .competitor .actions button:hover {
+        opacity: 0.8;
+    
+    }
+    
+    .competitor .actions button:active {
+        opacity: 0.6;
+    }
+
+    .competitor .actions .edit {
+        background-image: linear-gradient(to right, var(--pink), var(--purple));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .competitor .actions .delete {
+        color: crimson;
+        
+    }
