@@ -55,10 +55,10 @@ module.exports = {
         .then(dbRes => res.status(200).send(dbRes[0]))
         .catch(err => console.log(err))
     },
-    deleteCompetitor: (req, res) => {
-        let {name} = req.body;
-        sequelize.query(`DELETE from Competitors where name = ${name}`)
-        .then(dbRes => res.status(200).send(dbRes[0]))
-        .catch(err => console.log(err))
-    },
+    //deleteCompetitor: (req, res) => {
+       // let {name} = req.body;
+       // sequelize.query(`DELETE from Competitors where id = ${name}`)
+       // .then(dbRes => res.status(200).send(dbRes[0]))
+       // .catch(err => console.log(err))
+    //}
 }

@@ -1,7 +1,7 @@
 const form = document.querySelector('new-competitor-form')
 const input = document.querySelector('#new-competitor-input')
-//const competitorSelect = document.querySelector('#country-select')
-const competitorList = document.querySelector('#competitors')
+const competitorSelect = document.querySelector('#competitor-select')
+const competitorList = document.querySelector('#competitor-list')
 
 
 function handleSubmit(e) {
@@ -13,11 +13,11 @@ function handleSubmit(e) {
     }
 
     //let userRating = document.querySelector('input[name="rating"]:checked').value
-    //let body = {
-      //  name: nameInput.value, 
-       // rating: +userRating, 
-        //countryId: +countrySelect.value
-    //}
+    let body = {
+        name: "nameInput.value" 
+        //rating: +userRating, 
+        //competitorId: +competitorSelect.value
+    }
 
     axios.post('http://localhost:4004/competitors', body)
         .then(() => {
@@ -27,16 +27,14 @@ function handleSubmit(e) {
             getCompetitors()
         })
 }
-function deleteCard(id) {
-    axios.delete(`http://localhost:4004/competitors/${id}`)
-        .then(() => getCompetitors())
-        .catch(err => console.log(err))
-}
-//function deleteCard(id) {
+//function deleteCompetitor(id) {
     //axios.delete(`http://localhost:4004/competitors/${id}`)
         //.then(() => getCompetitors())
-       // .catch(err => console.log(err))
+        //.then(() => {})
+        //.catch(err => console.log(err))
 //}
+
+
 
 function getCompetitors() {
     competitorList.innerHTML = ''
@@ -44,14 +42,8 @@ function getCompetitors() {
     axios.get('http://localhost:4004/competitors/')
         .then(res => {
             res.data.forEach(elem => {
-                let competitorCard = `<div class="competitor-card">
-                    <h2>${elem.competitor}</h2>
-                    <h3>Ranking: ${elem.ranking}/5</h3>
-                    <button onclick="deleteCard(${elem['competitor_id']})">Delete</button>
-                    </div>
-                `
 
-                competitorList.innerHTML += competitorCard
+                competitorList.innerHTML += competitor
             })
         })
 }
@@ -59,11 +51,11 @@ function getCompetitors() {
 function getCompetitors() {
     axios.get('http://localhost:4004/competitors')
         .then(res => {
+            console.log(res.data)
             res.data.forEach(competitor => {
-                const option = document.createElement('option')
-                option.setAttribute('value', competitor['competitor_id'])
-                option.textContent = competitor.name
-                competitorSelect.appendChild(option)
+                const option = document.createElement('div')
+                option.innerHTML = competitor.name
+                competitorSelect.appendChild('div')
             })
         })
 }

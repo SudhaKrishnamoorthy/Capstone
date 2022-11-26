@@ -15,6 +15,6 @@ app.post('/seed', seed)
 app.get('/competitors', getCompetitors)
 
 app.post('/competitors', createCompetitor)
-app.delete('/competitors/:name', deleteCompetitor)
+//app.delete('/competitors/:id', deleteCompetitor, () => {})
 
 app.listen(SERVER_PORT, () => console.log(`up on ${SERVER_PORT}`))
