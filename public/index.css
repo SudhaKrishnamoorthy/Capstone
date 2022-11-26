@@ -6,6 +6,7 @@
     --light:  #EEE;
     --pink: #EC4899;
     --purple: #8B5Cf6;
+    --crimson:#DC143C;
 }
 * {
     font-family: 'Fira sans'; 'sans-serif'
@@ -70,7 +71,7 @@ input, button {
     color: var(--pink);
     font-size: 1.25rem;
     font-weight: 700;
-    background-image: linear-gradient(to right, var(--pink), var(--purple));
+    background-image: linear-gradient(to right, var(--pink), var(--crimson));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     cursor: pointer;
@@ -108,7 +109,7 @@ main {
     #competitors .competitor {
         display: flex;
         justify-content: space-between;
-        background-color: var(--darkest);
+        background-color: var(--darker);
         padding: 1rem;
         border-radius: 1rem;
         margin-bottom: 1rem;
@@ -124,6 +125,7 @@ main {
     }
 
     #competitors .competitor .content .text:not(:read-only) {
+        
         color: var(--pink);
     }
 
@@ -156,7 +158,35 @@ main {
         -webkit-text-fill-color: transparent;
     }
 
-    .competitor .actions .delete {
-        color: crimson;
-        
+    .competitor .deleteBtn {
+        color: rgb(233, 14, 14);
+        cursor: pointer;
+        margin: 0 -0.5rem;
+        font-size: 1.125rem;
+        font-weight: 700;
+        text-transform:uppercase;
+        transition: 0.4s;
     }
+
+    img {
+        border-radius: 50%;
+        opacity: 0.5;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        object-fit: cover;
+        object-position: 80% 100%;
+      }
+      .competitorCard {
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        text-transform:uppercase
+      }
+
+      .content {
+        width: 100%;
+      }
+
+      

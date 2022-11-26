@@ -43,7 +43,7 @@ module.exports = {
         }).catch(err => console.log('error seeding DB', err))
     },
     getCompetitors: (req, res) => {
-        sequelize.query(`SELECT name FROM competitors`)
+        sequelize.query(`SELECT * FROM competitors`)
         .then(dbRes => res.status(200).send(dbRes[0]))
         .catch(err => console.log(err))
     },
@@ -55,10 +55,10 @@ module.exports = {
         .then(dbRes => res.status(200).send(dbRes[0]))
         .catch(err => console.log(err))
     },
-    //deleteCompetitor: (req, res) => {
-       // let {name} = req.body;
-       // sequelize.query(`DELETE from Competitors where id = ${name}`)
-       // .then(dbRes => res.status(200).send(dbRes[0]))
-       // .catch(err => console.log(err))
-    //}
+    deleteCompetitor: (req, res) => {
+        let id = req.params.id;
+        sequelize.query(`DELETE from Competitors where competitor_id = ${id}`)
+        .then(dbRes => res.status(200).send(dbRes[0]))
+        .catch(err => console.log(err))
+    }
 }

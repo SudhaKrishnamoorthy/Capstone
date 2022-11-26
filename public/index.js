@@ -1,20 +1,21 @@
-const form = document.querySelector('new-competitor-form')
-const input = document.querySelector('#new-competitor-input')
-const competitorSelect = document.querySelector('#competitor-select')
-const competitorList = document.querySelector('#competitor-list')
+const form = document.querySelector('#new-competitor-form')
+const newCompetitorInput = document.querySelector('#new-competitor-input')
+const competitorSelect = document.querySelector('#new-competitor-submit')
+const competitorList = document.querySelector('#competitorList')
+const competitors = document.querySelector('#competitors')
 
 
 function handleSubmit(e) {
     e.preventDefault()
 
-    if (input.value < 1) {
+    if (newCompetitorInput.value < 1) {
         alert ('You must enter a competitor name')
         return;
     }
 
     //let userRating = document.querySelector('input[name="rating"]:checked').value
     let body = {
-        name: "nameInput.value" 
+        name: newCompetitorInput.value 
         //rating: +userRating, 
         //competitorId: +competitorSelect.value
     }
@@ -27,35 +28,45 @@ function handleSubmit(e) {
             getCompetitors()
         })
 }
-//function deleteCompetitor(id) {
-    //axios.delete(`http://localhost:4004/competitors/${id}`)
-        //.then(() => getCompetitors())
-        //.then(() => {})
-        //.catch(err => console.log(err))
-//}
+function deleteCompetitor(id) {
+    axios.delete(`http://localhost:4004/competitors/${id}`)
+        .then(() => getCompetitors())
+        .then(() => {})
+        .catch(err => console.log(err))
+}
 
 
 
-function getCompetitors() {
+/*function getCompetitors() {
     competitorList.innerHTML = ''
 
     axios.get('http://localhost:4004/competitors/')
         .then(res => {
             res.data.forEach(elem => {
+                let competitorCard = `<div class="competitorCard">
+                    <h2>${elem.name}</h2>
+                     <button onclick="deleteCompetitor(${elem.competitor_id})">Delete</button>
+                    </div>`
 
-                competitorList.innerHTML += competitor
+                competitorList.innerHTML += competitorCard
             })
         })
-}
+}*/
 
 function getCompetitors() {
+    competitorList.innerHTML = ''
     axios.get('http://localhost:4004/competitors')
         .then(res => {
-            console.log(res.data)
-            res.data.forEach(competitor => {
-                const option = document.createElement('div')
-                option.innerHTML = competitor.name
-                competitorSelect.appendChild('div')
+            //console.log(res.data)
+            res.data.forEach(elem => {
+                let competitorCard = `<div class="competitor"><div class="competitorCard" id="new-competitor-submit">
+                    <h2>${elem.name}</h2>
+                     <button class="deleteBtn" onclick="deleteCompetitor(${elem['competitor_id']})">Delete</button>
+                    </div>
+                    </div>`
+                    //console.log(competitorCard)
+
+                competitors.innerHTML += competitorCard
             })
         })
 }
