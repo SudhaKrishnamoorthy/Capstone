@@ -63,10 +63,11 @@ function getCompetitors() {
                     <h2>${elem.name}</h2>
                      <button class="deleteBtn" onclick="deleteCompetitor(${elem['competitor_id']})">Delete</button>
                     </div>
-                    </div>`
+                    </div>`;
                     //console.log(competitorCard)
 
-                competitors.innerHTML += competitorCard
+                //competitors.innerHTML += competitorCard
+                competitorList.innerHTML +=competitorCard
             })
         })
 }

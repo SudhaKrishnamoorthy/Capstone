@@ -60,5 +60,6 @@ module.exports = {
         sequelize.query(`DELETE from Competitors where competitor_id = ${id}`)
         .then(dbRes => res.status(200).send(dbRes[0]))
         .catch(err => console.log(err))
-    }
+    },
+    
 }
