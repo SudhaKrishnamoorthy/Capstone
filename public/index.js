@@ -15,8 +15,8 @@ function handleSubmit(e) {
 
     //let userRating = document.querySelector('input[name="rating"]:checked').value
     let body = {
-        name: newCompetitorInput.value 
-        //rating: +userRating, 
+        name: newCompetitorInput.value.toUpperCase() 
+               //rating: +userRating, 
         //competitorId: +competitorSelect.value
     }
 
@@ -26,7 +26,8 @@ function handleSubmit(e) {
             newCompetitorInput.value = ''
             //document.querySelector('#ranking-one').checked = true
             getCompetitors()
-        })
+            })
+            .catch(err => {alert('competitor exists'); console.log(err)})
 }
 function deleteCompetitor(id) {
     axios.delete(`http://localhost:4004/competitors/${id}`)

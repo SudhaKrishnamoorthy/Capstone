@@ -23,20 +23,20 @@ module.exports = {
 
             create table competitors (
                 competitor_id serial primary key, 
-                name varchar
+                name varchar unique
             );             
             
                        
 
             insert into competitors (name)
-            values ('Godiva'),
-            ('Lindt'),
-            ('Mars'),
-            ('Chocolove'),
-            ('Ghirardelli'),
-            ('Swiss Alps'),
-            ('Toblerone'),
-            ('Cadbury')            ;
+            values ('GODIVA'),
+            ('LINDT'),
+            ('MARS'),
+            ('CHOCOLOVE'),
+            ('GHIRARDELLI'),
+            ('SWISS ALPS'),
+            ('TOBLERONE'),
+            ('CADBURY')            ;
         `).then(() => {
             console.log('DB seeded!')
             res.sendStatus(200)
@@ -53,7 +53,7 @@ module.exports = {
         values('${name}')
         RETURNING *;`)
         .then(dbRes => res.status(200).send(dbRes[0]))
-        .catch(err => console.log(err))
+        
     },
     deleteCompetitor: (req, res) => {
         let id = req.params.id;
